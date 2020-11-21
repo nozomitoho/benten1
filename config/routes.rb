@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:show]
+   resources :users, only: [:show, :edit, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get 'hello/index' => 'hello#index'
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   put 'users/unfollow/:user_id',to: 'users#unfollow'
   get 'users/follow_list/:user_id',to: 'users#follow_list'
   get 'users/follower_list/:user_id',to:'users#follower_list'
+  get '/mypage' => 'users#mypage'
 
   resources :tweets do
     resources :likes, only: [:create, :destroy]

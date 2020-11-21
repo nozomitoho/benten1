@@ -9,12 +9,6 @@
 
     <%= render 'follow_form' %>
     <%= render 'stats' %>
-
-    <div class="link">
-      <% if current_user.id == @user.id %>
-        <%= button_to "編集する", edit_user_registration_path %>
-      <% end %>
-    </div>
 </div>
 
 
