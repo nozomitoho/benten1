@@ -5,7 +5,7 @@
 
 .tweets-container {
     width: 50%;
-    height: auto;
+    height: 100px;
     margin: 10px auto;
   }
 
@@ -22,18 +22,15 @@
     flex-direction: column;
   }
 
-  .main-box {
+  .contents {
     margin: 5px 0;
-    display: flex;
-    justify-content: space-between;
   }
-  .time {
+  
+  .right-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
 
-
-.indexfooter {
-  margin-top: 30px;
-  font-size: 60px;
+ul {
+  list-style: none;
 }

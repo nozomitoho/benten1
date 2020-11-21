@@ -12,21 +12,20 @@
 <div class="tweets-container">
   <% @tweets.each do |t| %>
     <div class="tweet">
-      <div class="main-box">
-        <div class="name-container"><%= t.user.email %></div>
-        <div class="left-container">
-            <%= image_tag t.image_url, size: "250x200" if t.image? %>
-            <%= t.body %>
-            <p>
-            <%= link_to t.video_url.to_s do %>
-            <%= video_tag(t.video.to_s) %>
-            <% end %>
-            </p>
-        </div>       
+        <div class="contents">
+           <h3>ユーザー名:<%= t.user.name %></h3>
+           <ul>
+              <h4>ツイート<h4>
+              <li><%= image_tag t.image_url, size: "250x200" if t.image? %>
+              <li><%= t.body %><li>
+              <p>
+              <%= link_to t.video_url.to_s do %>
+              <%= video_tag(t.video.to_s) %>
+              <% end %>
+              </p>
+           </ul>
+        </div>   
 
-        <div class="right-container">
-           <%= link_to "詳細へ", tweet_path(t.id) %>
-           <%= button_to "削除する", tweet_path(t.id), method: :delete %>
                 <% if user_signed_in? %>
                 <% if current_user.already_liked?(t) %>
                     <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
@@ -40,11 +39,13 @@
               <% else %>
                 <i class="fas fa-heart"></i><%= t.likes.count %>
               <% end %>
-              <p class="time"><%= t.created_at %></p>
-            <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
-         </div>
+
+              <div class="right-container">
+                <p class="time"><%= t.created_at %></p>
+                <%= link_to "詳細へ", tweet_path(t.id) %>
+                <%= button_to "削除する", tweet_path(t.id), method: :delete %>
+              </div>
       </div>
-    </div>
   <% end %>
 </div>
 
