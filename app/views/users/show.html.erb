@@ -1,0 +1,42 @@
+<%= stylesheet_link_tag 'usershow', :media => "all" %>
+
+<h1>マイページ</h1>
+
+<div class="profile">
+    <p>名前 : <%= @user.name %></p>
+    <p>メールアドレス : <%= @user.email %></p>
+    <p>プロフィール : <%= @user.profile %></p>
+
+    <%= render 'follow_form' %>
+    <%= render 'stats' %>
+
+    <div class="link">
+      <% if current_user.id == @user.id %>
+        <%= button_to "編集する", edit_user_registration_path %>
+      <% end %>
+    </div>
+</div>
+
+
+<h2>あなたの投稿一覧</h2>
+
+<div class="tweets-container">
+    <% @user.tweets.each do |t| %>
+      <div class="tweet">
+        <div class="main-box">
+        <div class="name-container"><%= t.user.email %></div>
+            <div class="left-container">
+              <%= image_tag t.image_url, size: "250x200" if t.image? %>
+              <%= t.body %>
+              <p>
+              <%= link_to t.video_url.to_s do %>
+              <%= video_tag(t.video.to_s) %>
+              <% end %>
+              </p>
+              <p class="time"><%= t.created_at %></p>
+            </div>  
+        </div>
+      </div>
+        
+    <% end %>
+</div>

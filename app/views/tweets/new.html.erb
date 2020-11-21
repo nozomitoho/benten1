@@ -1,0 +1,26 @@
+<%= stylesheet_link_tag 'new', :media => "all" %>
+
+
+<div class="tweet-in">
+      <h2>ツイートを投稿しよう！！</h2>
+
+    <%= form_for @tweet do |f| %>
+  
+  <div class="field">
+    <%= f.text_field :body, :size => 140 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :video %>
+    <%= f.file_field :video, :accept => 'video/*' %>
+  </div>
+   
+  <%= f.submit "ここから投稿する" %>
+<% end %>
+<%= link_to "Tweet一覧に戻る", tweets_path %>
+

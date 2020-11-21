@@ -1,0 +1,39 @@
+.search-container {
+    text-align: center;
+    border-top: solid #00acee;
+}
+
+.tweets-container {
+    width: 50%;
+    height: auto;
+    margin: 10px auto;
+  }
+
+  h3 {
+    margin-bottom: 15px;
+  }
+  
+  .tweet {
+    margin-top: 15px;
+    padding-top: 30px;
+    background: #f0f7ff;
+    border: dashed 2px #5b8bd0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-box {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .time {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+
+.indexfooter {
+  margin-top: 30px;
+  font-size: 60px;
+}

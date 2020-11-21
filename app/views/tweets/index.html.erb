@@ -1,0 +1,50 @@
+<%= stylesheet_link_tag 'index', :media => "all" %>
+
+
+<div class="search-container">
+    <h3>投稿を検索してみよう！</h3>
+    <%= form_tag({controller:"tweets",action:"index"}, method: :get) do %>
+      <%= text_field_tag :search %>
+      <%= submit_tag '検索する'  %>
+    <% end %>
+</div>
+
+<div class="tweets-container">
+  <% @tweets.each do |t| %>
+    <div class="tweet">
+      <div class="main-box">
+        <div class="name-container"><%= t.user.email %></div>
+        <div class="left-container">
+            <%= image_tag t.image_url, size: "250x200" if t.image? %>
+            <%= t.body %>
+            <p>
+            <%= link_to t.video_url.to_s do %>
+            <%= video_tag(t.video.to_s) %>
+            <% end %>
+            </p>
+        </div>       
+
+        <div class="right-container">
+           <%= link_to "詳細へ", tweet_path(t.id) %>
+           <%= button_to "削除する", tweet_path(t.id), method: :delete %>
+                <% if user_signed_in? %>
+                <% if current_user.already_liked?(t) %>
+                    <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
+                      <i class="fas fa-heart"></i><%= t.likes.count %>
+                    <% end %>
+                <% else %>
+                    <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
+                        <i class="fas fa-heart"></i><%= t.likes.count %>  
+                    <% end %>
+                <% end %>
+              <% else %>
+                <i class="fas fa-heart"></i><%= t.likes.count %>
+              <% end %>
+              <p class="time"><%= t.created_at %></p>
+            <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+         </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+

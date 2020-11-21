@@ -1,0 +1,45 @@
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px auto;
+    border-bottom: aqua;
+    width: 50%;
+    border: solid #d3def1;
+    border-radius: 10px;
+}
+
+
+.tweets-container {
+    width: 50%;
+    margin: 10px auto;
+}
+
+h2 {
+   margin-left: 865px;   
+}
+  
+.tweet {
+    margin-top: 15px;
+    padding-top: 30px;
+    background: #f0f7ff;
+    border: dashed 2px #5b8bd0;
+    display: flex;
+    flex-direction: column;
+}
+
+  .main-box {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+}
+  .time {
+    display: flex;
+    justify-content: flex-end;
+}
