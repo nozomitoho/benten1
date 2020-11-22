@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
    resources :users, only: [:show, :edit, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
+  root 'tweets#index'
   get 'hello/index' => 'hello#index'
   get 'hello/link' => 'hello#link'
 
@@ -25,6 +25,6 @@ Rails.application.routes.draw do
   
   resources :relationships, only: [:create, :destroy]
   
-  root 'tweets#index'
+ 
 
 end
